@@ -1,0 +1,5 @@
+services:
+  whitebox.route_subscriber:
+    class: Drupal\whitebox\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

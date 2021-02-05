@@ -1,0 +1,15 @@
+whitebox.find:
+  path: '/finder'
+  defaults:
+    _controller: '\Drupal\whitebox\Controller\WhiteboxController::finder'
+    _title: 'WhiteBox Finder'
+  requirements:
+    _permission: 'access content'
+
+whitebox.json:
+  path: '/page_json/{API}/{node}'
+  defaults:
+    _controller: '\Drupal\whitebox\Controller\WhiteboxController::serveJSON'
+    _title: 'JSON content'
+  requirements:
+    _permission: 'access content'

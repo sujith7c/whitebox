@@ -1,0 +1,6 @@
+
+name: 'whitebox'
+description: 'Custom module to alter site iformation page'
+type: module
+core: 8.x
+package: Custom

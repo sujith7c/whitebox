@@ -1,0 +1,63 @@
+<?php
+
+/**
+*custom module to alter the configuration page 
+ **/
+
+ //include drupal class
+
+ use Drupal\Core\Routing\RouteMatchInterface; 
+
+/**
+ * Implemetation of hook_help
+ */
+
+ function whitebox_help($route_name, RouteMatchInterface $route_match){
+    switch($route_name){
+        case  'help.page.whitebox':
+            $output ="";
+            $output .= "<h3>" . t("Whitebox Module Help") . "</h3>";
+            $output .="<p>" . t("Whitebox module help defined") . "</p>";
+            return $output;
+
+        default:
+    }
+ }
+
+ /**
+  * form alter hook to alter the Save button text and insert custom form submit handler
+  */
+
+function whitebox_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id){
+    $config = \Drupal::config('system.site');
+
+    if ($form['#id'] == 'system-site-information-settings') {
+        //ksm($form['actions']['submit']['#value']);
+        //$btn_text = empty($config->get('siteapikey')) ? 'Save  Configuration' : 'Update Configuration';
+        
+        $form['actions']['submit']['#value'] = t('Update Configuration');
+    }
+/*
+    foreach (array_keys($form['actions']) as $action) {
+        if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+            $form['actions'][$action]['#submit'][] = 'whitebox_form_submit';
+        }
+    }
+*/
+
+}
+
+/**
+ * TODO : this code need review as the order of submite is not understood
+ */
+
+/**
+ * custom form handler to show API key save message,
+ */
+
+ /*
+ function whitebox_form_submit(&$form, \Drupal\Core\Form\FormStateInterface $form_state){
+    //show Drupal message after the form save
+    \Drupal::service('messenger')->addMessage("API Key " . $form_state->getValue('siteapikey'));
+ }
+ */

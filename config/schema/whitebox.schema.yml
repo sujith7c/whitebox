@@ -1,0 +1,9 @@
+# extend the system.site configuration
+whitebox.settings:
+  type: config_object
+  langcode: 'en'
+  mapping:
+    # Our field name is 'siteapikey'
+    siteapikeys:
+      type: label
+      label: 'Site API Keys'
